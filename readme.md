@@ -1,4 +1,4 @@
-# Projet Fullstack avec React, Express et MongoDB
+# Test Technique Hatis
 
 Ce projet est une application fullstack comprenant un frontend en React et un backend en Express avec MongoDB. Le frontend consomme une API RESTful pour gérer les données de la table.
 
@@ -12,8 +12,6 @@ Ce projet est une application fullstack comprenant un frontend en React et un ba
 │ ├── compon
 ### Backend (Express + MongoDB)
 
-```
-
 /backend
 ├── app.js # Point d'entrée du serveur Express
 ├── models/ # Modèles de données
@@ -25,6 +23,8 @@ Ce projet est une application fullstack comprenant un frontend en React et un ba
 ├── package.json # Dépendances et configuration du backend
 
 ```
+```
+
 ents/          # Composants React
 │ │   ├── Table.js         # Composant de la table
 │ │   ├── TableCell.js     # Composant des cellules de la table
