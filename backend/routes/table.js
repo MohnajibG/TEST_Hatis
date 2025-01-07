@@ -30,5 +30,15 @@ router.put("/cells", async (req, res) => {
       .json({ error: "Erreur lors de la mise à jour de la cellule" });
   }
 });
+router.delete("/cells", async (req, res) => {
+  try {
+    await Table.deleteMany({});
+    res.status(200).json({ message: "Toutes les cellules ont été supprimées" });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ error: "Erreur lors de la suppression des cellules" });
+  }
+});
 
 module.exports = router;

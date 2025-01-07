@@ -9,17 +9,17 @@ const Table = () => {
   const [selectedCol, setSelectedCol] = useState(null);
   const [cells, setCells] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCells = async () => {
       try {
         const response = await axios.get("http://localhost:3000/cells");
-        console.log("Données récupérées :", response.data);
         setCells(response.data);
         setLoading(false);
       } catch (error) {
-        console.log("Erreur lors de la récupération des données :", error);
         setLoading(false);
+        setError("Erreur lors de la récupération des données");
       }
     };
 
@@ -44,9 +44,8 @@ const Table = () => {
   const updateCell = async (row, col, value) => {
     try {
       await axios.put("http://localhost:3000/cells", { row, col, value });
-      console.log(`Cell (${row}, ${col}) updated successfully!`);
     } catch (err) {
-      console.error("Error updating cell:", err);
+      setError("Erreur lors de la mise à jour de la cellule");
     }
   };
 
@@ -57,9 +56,19 @@ const Table = () => {
       : `Cell ${String.fromCharCode(65 + col)}${row + 1}`;
   };
 
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
+  const handleReset = async () => {
+    try {
+      await axios.delete("http://localhost:3000/cells");
+      setCells([]);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      setError("Erreur lors de la réinitialisation des données");
+    }
+  };
+
+  return (
     <div className="table">
       <Header onHeaderClick={handleHeaderClick} />
       {Array.from({ length: 10 }).map((_, rowIndex) => (
@@ -74,6 +83,10 @@ const Table = () => {
           cells={cells}
         />
       ))}
+      <button className="reset-button" onClick={handleReset}>
+        Reset
+      </button>
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };
