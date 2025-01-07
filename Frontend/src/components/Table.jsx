@@ -45,10 +45,10 @@ const Table = () => {
 
   const updateCell = async (row, col, value) => {
     try {
-      await axios.put("http://localhost:3000/cells", { row, col, value });
+      await axios.post("http://localhost:3000/table", { row, col, value });
       fetchCells();
-    } catch (err) {
-      setError("Erreur lors de la mise à jour de la cellule");
+    } catch (error) {
+      setError("Erreur lors de l'ajout ou la mise à jour de la cellule");
     }
   };
 
