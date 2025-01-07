@@ -4,12 +4,7 @@ Ce projet est une application fullstack comprenant un frontend en React et un ba
 
 ## Structure du projet
 
-### Frontend (React)
 
-```
-/frontend
-├── src/
-│ ├── compon
 ### Backend (Express + MongoDB)
 
 /backend
@@ -25,13 +20,18 @@ Ce projet est une application fullstack comprenant un frontend en React et un ba
 ```
 ```
 
-ents/          # Composants React
+### Frontend (React)
+
+/frontend
+├── src/
+│ ├── components/          # Composants React
 │ │   ├── Table.js         # Composant de la table
 │ │   ├── TableCell.js     # Composant des cellules de la table
 │ ├── App.js               # Composant principal
 │ ├── index.js             # Point d'entrée de l'application
 │ └── styles.css           # Styles de l'application
 ├── package.json           # Dépendances et configuration du frontend
+
 ```
 
 ## Prérequis
