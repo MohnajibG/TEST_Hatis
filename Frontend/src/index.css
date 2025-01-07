@@ -1,0 +1,50 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+ul,
+ol {
+  list-style: none;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+input,
+textarea {
+  font-family: inherit;
+  box-sizing: border-box; /* Ajouté ici */
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-sizing: border-box; /* Ajouté ici */
+}

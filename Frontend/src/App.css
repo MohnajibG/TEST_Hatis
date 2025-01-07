@@ -1,0 +1,150 @@
+.header-App {
+  background-color: #f52e2e;
+}
+header {
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  width: 100vw;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #7070f6;
+  width: 100vw;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+.table {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  overflow: auto;
+}
+.cell-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  background-color: transparent;
+  outline: none;
+}
+
+.cell:hover {
+  background-color: #f55757;
+}
+.selected {
+  background-color: #2859f961;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.header-cell {
+  background-color: #dbabab;
+  text-align: center;
+}
+
+.row-number {
+  font-weight: bold;
+  background-color: #6d8af397;
+  text-align: center;
+}
+
+.reset-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 50%;
+  text-align: center;
+}
+
+.reset-button:hover {
+  background-color: #0056b3;
+}
+
+.reset-button:focus {
+  outline: none;
+}
+@media (max-width: 768px) {
+  .header-row {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .row div,
+  .row input {
+    flex: 1 1 80px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .row-header {
+    flex: 0 0 40px;
+    font-size: 12px;
+  }
+
+  .reset-button {
+    font-size: 12px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-row {
+    flex-wrap: wrap;
+    padding: 10px 5px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .row div,
+  .row input {
+    flex: 1 1 100%;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .row-header {
+    flex: 1 1 100%;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .reset-button {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+}
