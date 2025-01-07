@@ -9,27 +9,29 @@ Ce projet est une application fullstack comprenant un frontend en React et un ba
 ```
 /frontend
 ├── src/
-│ ├── components/          # Composants React
+│ ├── compon
+### Backend (Express + MongoDB)
+
+```
+
+/backend
+├── app.js # Point d'entrée du serveur Express
+├── models/ # Modèles de données
+│ └── Table.js # Modèle de la table
+├── routes/ # Routes de l'API
+│ └── table.js # Route pour gérer la table
+├── config/ # Configuration de la base de données
+│ └── db.js # Configuration de la connexion MongoDB
+├── package.json # Dépendances et configuration du backend
+
+```
+ents/          # Composants React
 │ │   ├── Table.js         # Composant de la table
 │ │   ├── TableCell.js     # Composant des cellules de la table
 │ ├── App.js               # Composant principal
 │ ├── index.js             # Point d'entrée de l'application
 │ └── styles.css           # Styles de l'application
 ├── package.json           # Dépendances et configuration du frontend
-```
-
-### Backend (Express + MongoDB)
-
-```
-/backend
-├── app.js                 # Point d'entrée du serveur Express
-├── models/                # Modèles de données
-│ └── Table.js             # Modèle de la table
-├── routes/                # Routes de l'API
-│ └── table.js             # Route pour gérer la table
-├── config/                # Configuration de la base de données
-│ └── db.js                # Configuration de la connexion MongoDB
-├── package.json           # Dépendances et configuration du backend
 ```
 
 ## Prérequis
@@ -102,4 +104,4 @@ Le frontend sera accessible sur `http://localhost:3000`.
 
 ## Auteur
 
-Nom de l'auteur ou équipe
+[Najib]
