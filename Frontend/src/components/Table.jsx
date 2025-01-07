@@ -4,23 +4,27 @@ import { useState, useEffect } from "react";
 import Header from "./Header";
 import Row from "./Row";
 
+import load from "../assets/load.gif";
+
 const Table = () => {
   const [selectedRow, setSelectedRow] = useState(null);
   const [selectedCol, setSelectedCol] = useState(null);
   const [cells, setCells] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchCells = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/cells");
+      setCells(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError("Erreur lors de la récupération des données");
+    }
+  };
 
   useEffect(() => {
-    const fetchCells = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/cells");
-        setCells(response.data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
     fetchCells();
   }, []);
 
@@ -42,8 +46,9 @@ const Table = () => {
   const updateCell = async (row, col, value) => {
     try {
       await axios.put("http://localhost:3000/cells", { row, col, value });
+      fetchCells();
     } catch (err) {
-      console.error("Error updating cell:", err);
+      setError("Erreur lors de la mise à jour de la cellule");
     }
   };
 
@@ -57,32 +62,43 @@ const Table = () => {
   const handleReset = async () => {
     try {
       await axios.delete("http://localhost:3000/cells");
-      setCells([]); // Réinitialisation de l'état local
+      setCells([]);
+      setError(null);
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     } catch (error) {
-      console.error("Erreur lors de la réinitialisation des données :", error);
+      setError("Erreur lors de la réinitialisation des données");
     }
   };
 
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
+  return (
     <div className="table">
-      <Header onHeaderClick={handleHeaderClick} />
-      {Array.from({ length: 10 }).map((_, rowIndex) => (
-        <Row
-          key={rowIndex}
-          rowIndex={rowIndex}
-          selectedRow={selectedRow}
-          selectedCol={selectedCol}
-          onCellClick={handleCellClick}
-          generateCellValue={generateCellValue}
-          updateCell={updateCell}
-          cells={cells}
-        />
-      ))}
-      <button className="reset-button" onClick={handleReset}>
-        Reset
-      </button>
+      {error && <div className="error-message">{error}</div>}
+      {loading ? (
+        <div className="load">
+          <img src={load} alt="Loading" />
+        </div>
+      ) : (
+        <>
+          <Header onHeaderClick={handleHeaderClick} />
+          {Array.from({ length: 10 }).map((_, rowIndex) => (
+            <Row
+              key={rowIndex}
+              rowIndex={rowIndex}
+              selectedRow={selectedRow}
+              selectedCol={selectedCol}
+              onCellClick={handleCellClick}
+              generateCellValue={generateCellValue}
+              updateCell={updateCell}
+              cells={cells}
+            />
+          ))}
+          <button className="reset-button" onClick={handleReset}>
+            Reset
+          </button>
+        </>
+      )}
     </div>
   );
 };

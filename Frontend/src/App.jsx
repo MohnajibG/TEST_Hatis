@@ -4,10 +4,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <header
-        className="header-App
-      "
-      >
+      <header className="header-App">
         <h1>Tableau de données</h1>
       </header>
       <main className="main-content">
